@@ -1,6 +1,5 @@
 using Emgu.CV.Features2D;
 using Gdk;
-using System;
 using System.Collections.Generic;
 
 public static class Detect

@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeformablePartsModel", "DeformablePartsModel\DeformablePartsModel.csproj", "{E7660558-94E2-41BC-8B88-78D3BA4EABFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7660558-94E2-41BC-8B88-78D3BA4EABFF}.Debug|x86.ActiveCfg = Debug|x86
+		{E7660558-94E2-41BC-8B88-78D3BA4EABFF}.Debug|x86.Build.0 = Debug|x86
+		{E7660558-94E2-41BC-8B88-78D3BA4EABFF}.Release|x86.ActiveCfg = Release|x86
+		{E7660558-94E2-41BC-8B88-78D3BA4EABFF}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal

@@ -1,4 +1,7 @@
+using Emgu.CV;
 using Emgu.CV.Features2D;
+using Emgu.CV.Dnn;
+using Emgu.CV.Structure;
 using Gdk;
 using System.Collections.Generic;
 
@@ -174,6 +177,35 @@ public static class Detect
                         );
                     }
                 }
+            }
+        }
+    }
+
+    public static void CaffeModel(OpenCV cv, Pixbuf pixbuf, Select selection, double ScaleX, double ScaleY)
+    {
+        if (pixbuf != null)
+        {
+            using (var mat = cv.ToMat(pixbuf))
+            {
+                selection.Clear();
+
+                var img = mat.ToImage<Bgr, byte>();
+                var net = DnnInvoke.ReadNetFromCaffe("deploy.prototxt", "bvlc_googlenet.caffemodel");
+                var blob = DnnInvoke.BlobFromImage(img, 1.0, new System.Drawing.Size(224, 224), new MCvScalar(123, 117, 104), false, false);
+
+                net.SetInput(blob, "data");
+
+                var probBlob = net.Forward("prob");
+                var probMat = probBlob.Reshape(1, 1);
+
+                var minLoc = new System.Drawing.Point();
+                var maxLoc = new System.Drawing.Point();
+                double minVal = 0;
+                double maxVal = 0;
+
+                CvInvoke.MinMaxLoc(probMat, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+
+                var classId = maxLoc.X;
             }
         }
     }

@@ -189,9 +189,8 @@ public static class Detect
             {
                 selection.Clear();
 
-                var img = mat.ToImage<Bgr, byte>();
                 var net = DnnInvoke.ReadNetFromCaffe("deploy.prototxt", "bvlc_googlenet.caffemodel");
-                var blob = DnnInvoke.BlobFromImage(img, 1.0, new System.Drawing.Size(224, 224), new MCvScalar(123, 117, 104), false, false);
+                var blob = DnnInvoke.BlobFromImage(mat, 1.0, new System.Drawing.Size(224, 224), new MCvScalar(123, 117, 104), false, false);
 
                 net.SetInput(blob, "data");
 
